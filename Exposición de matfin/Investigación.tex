@@ -1,0 +1,103 @@
+\documentclass[12pt,spanish]{homework}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{mathpazo}
+\usepackage{graphicx}
+\usepackage{lifecoin}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{enumerate} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[spanish,mexico]{babel}
+\inputencoding{latin1}
+
+\title{Anualidades continuas}
+\author{Emilio Balan,Amilcar Campos, Elian Carrasco, Citlali Gutiérrez}
+\date{2 de diciembre del 2020}
+\institute{Universidad Autónoma de Yucatán \\ Facultad de Matemáticas - UADY}
+\class{Matemáticas Financieras (Grupo B)}
+\professor{Lic. Eric Sansores}
+
+\begin{document}
+
+\maketitle
+
+Se dice que una anualidad continua es aquella que en intervalos infinitamente pequeños otorgan una frecuencia de pago infinita, es decir, los pagos se realizan de forma continua. Aunque es difícil de visualizar en la práctica, una anualidad continua tiene una importancia teórica y analítica considerable. Además, es útil como una aproximación a las anualidades pagaderas con gran frecuencia, como diariamente.\\
+Denotaremos el valor presente de una anualidad  continuamente para n períodos de conversión de intereses, de manera que el monto total pagado durante cada período de conversión de intereses sea 1, por el símbolo $\bar{a}_{\lcroof{n}}$. Una expresión para $\bar{a}_{\lcroof{n}}$ es:
+$$\bar{a}_{\lcroof{n}} = \int \limits_{0}^{n} v^t dt$$
+Ya que la expresión diferencial $v^t dt$ es el valor presente de los pagos dt realizados en el momento exacto t.\\
+Se puede obtener una expresión simplificada resolviendo la integral:
+$$\bar{a}_{\lcroof{n}} = \int \limits_{0}^{n} V^t dt$$
+$$=\dfrac{v^t}{ln v}\Big|_0^n$$
+$$=\dfrac{v^n}{ln v} - \dfrac{v^0}{ln v}$$
+$$=\dfrac{v^n - 1}{ln v}$$
+$$=\dfrac{v^n - 1}{ln((1+i)^{-1})}$$
+Por propiedades de logaritmos esto es igual a:
+$$=\dfrac{1 - v^n}{ln(1+i)}$$
+De igual forma por información previa conocemos que 
+$\delta = ln(1 + i)$, así que esto lo podríamos ver cómo:
+$$=\dfrac{1 - v^n}{\delta}.$$
+Nuevamente, existe coherencia entre la forma en que se realizan los pagos y el denominador de la expresión.\\
+También la formula la pudimos obtener mediante limites:
+$$\bar{a}_{\lcroof{n}} = \lim_{m \to \infty}\bar{a}_{\lcroof{n}}^{(m)}= \lim_{m \to \infty}\dfrac{1 - v^n}{i^{(m)}}$$
+Por propiedades de limites esto es igual a:
+$$=\dfrac{\lim_{m \to \infty} 1 - v^n}{\lim_{m \to \infty} i^{(m)}}$$
+Y por información previa sabemos que $$\lim_{m \to \infty} i^{(m)} = \delta$$
+Así que:
+$$\dfrac{\lim_{m \to \infty} 1 - v^n}{\lim_{m \to \infty} i^{(m)}} = \dfrac{1 - v^n}{\delta}$$
+Ó
+$$\bar{a}_{\lcroof{n}} = \lim_{m \to \infty}\ddot{a}_{\lcroof{n}}^{(m)}= \lim_{m \to \infty}\dfrac{1 - v^n}{d^{(m)}}$$
+De igual forma por propiedades de limites esto es igual a:
+$$\dfrac{\lim_{m \to \infty} 1 - v^n}{\lim_{m \to \infty} d^{(m)}}$$
+Y por información previa sabemos que $$\lim_{m \to \infty} d^{(m)} = \delta$$
+Así que:
+$$\dfrac{\lim_{m \to \infty} 1 - v^n}{\lim_{m \to \infty} d^{(m)}} = \dfrac{1 - v^n}{\delta}$$
+El valor acumulado de una anualidad continua al final del plazo de la anualidad se indica con $\bar{s}_{\lcroof{n}}$. La siguiente relación se mantiene:
+$$\bar{s}_{\lcroof{n}} = \int \limits_{0}^{n} (1 + i)^t dt$$
+$$=\dfrac{(1+i)^t}{ln (1 + i)}\Big|_0^n$$
+$$=\dfrac{(1+i)^n}{ln (1 + i)} - \dfrac{(1+i)^0}{ln (1+i)}$$
+$$=\dfrac{(1+i)^n - 1}{ln (1+i)}$$
+De igual forma por información previa conocemos que 
+$\delta = ln(1 + i)$, así que esto lo podríamos ver cómo:
+$$=\dfrac{(1+i)^n - 1}{\delta}.$$
+También la formula la pudimos obtener mediante limites:
+$$\bar{s}_{\lcroof{n}} = \lim_{m \to \infty}\bar{s}_{\lcroof{n}}^{(m)}= \lim_{m \to \infty}\dfrac{(1+i)^n -1}{i^{(m)}}$$
+Por propiedades de limites esto es igual a:
+$$=\dfrac{\lim_{m \to \infty} (1+i)^n - 1}{\lim_{m \to \infty} i^{(m)}}$$
+Y por información previa sabemos que $$\lim_{m \to \infty} i^{(m)} = \delta$$
+Así que:
+$$\dfrac{\lim_{m \to \infty} (1+i)^n - 1}{\lim_{m \to \infty} i^{(m)}} = \dfrac{(1+i)^n - 1}{\delta}$$
+Ó
+$$\bar{s}_{\lcroof{n}} = \lim_{m \to \infty}\ddot{s}_{\lcroof{n}}^{(m)}= \lim_{m \to \infty}\dfrac{(1+i)^n -1}{d^{(m)}}$$
+De igual forma por propiedades de limites esto es igual a:
+$$\dfrac{\lim_{m \to \infty} (1+i)^n - 1}{\lim_{m \to \infty} d^{(m)}}$$
+Y por información previa sabemos que $$\lim_{m \to \infty} d^{(m)} = \delta$$
+Así que:
+$$\dfrac{\lim_{m \to \infty} (1+i)^n - 1}{\lim_{m \to \infty} d^{(m)}} = \dfrac{(1+i)^n - 1}{\delta}$$
+
+Se puede obtener información adicional sobre las anualidades continuas diferenciando la fórmula  $\bar{s}_{\lcroof{n}} = \int \limits_{0}^{n} (1 + i)^t dt$ con respecto a su límite superior n, y luego reemplazando n con t, que da
+$$\dfrac{d}{dt} \bar{s}_{\lcroof{n}} = (1+i)^t$$
+Y 
+$$1 - \delta \bar{s}_{\lcroof{t}} = 1 + ln(1+i)[\dfrac{(1+i)^t - 1}{\delta}]$$
+$$= 1 + ln(1+i)[\dfrac{(1+i)^t - 1}{in(1+i)}]$$
+$$= (1+i)^t$$
+$\therefore$ $(1+i)^t = 1 - \delta \bar{s}_{\lcroof{t}}$\\
+Esta fórmula tiene una interesante interpretación verbal. Considere un fondo de inversión en el que se deposita dinero continuamente a una tasa del 1 por ciento del período de conversión. El saldo del fondo en el momento t es igual a $\bar{s}_{\lcroof{n}}$ . El saldo del fondo cambia instantáneamente por dos razones. En primer lugar, los nuevos depósitos se producen a una tasa constante de 1 por período de conversión de intereses y, en segundo lugar, los intereses se generan a la fuerza $\delta$ del saldo del fondo $\bar{s}_{\lcroof{n}}$.\\
+De manera similar, al diferenciar la fórmula $\bar{a}_{\lcroof{n}} = \int \limits_{0}^{n} v^t dt$  tenemos
+$$\dfrac{d}{dt} \bar{a}_{\lcroof{n}} = v^t$$
+Y 
+$$1 - \delta \bar{a}_{\lcroof{t}} = 1 - ln(1+i)[\dfrac{(1 - v^t }{\delta}]$$
+$$= 1 - ln(1+i)[\dfrac{1 - v^t}{in(1+i)}]$$
+$$= v^t$$
+$\therefore$ $v^t = 1 - \delta \bar{a}_{\lcroof{t}}$\\
+Esta fórmula igual tiene una interesante interpretación verbal, pero requerimos información  de unidades posteriores para entenderla con más claridad.\\
+Por último podemos expresar el valor de las anualidades continuas estrictamente en términos de la fuerza del interés $\delta$. Una vez hecho esto, la fórmula $ \bar{a}_{\lcroof{n}}=\dfrac{1 - v^n}{\delta}$ se convierte en:
+$$\bar{a}_{\lcroof{n}}=\dfrac{1 - e^{-n\delta}}{\delta}$$
+Y esta formula se obtiene ya que por conocimiento previo sabemos que:
+$$e^{\delta} = v ^{-1} \Rightarrow e^{-\delta} = v \Rightarrow e^{-n\delta} = v^n$$
+Y la formula $\bar{s}_{\lcroof{n}}=\dfrac{(1+i)^n - 1}{\delta}$ se convierte en:
+$$\bar{s}_{\lcroof{n}}=\dfrac{e^{n\delta} - 1}{\delta}$$
+Y esta formula se obtiene ya que por conocimiento previo sabemos que:
+$$e^{\delta} = (1+i)  \Rightarrow e^{n\delta} = (1+i)^n$$
+\end{document}
